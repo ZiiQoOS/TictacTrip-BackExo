@@ -1,0 +1,24 @@
+{
+  "name": "exo-back",
+  "version": "1.0.0",
+  "description": "Tictactrip test \n Implement and deploy a REST API that justifies a text passed as a parameter.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZiiQoOS/TictacTrip-BackExo.git"
+  },
+  "author": "A-Z ESD.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZiiQoOS/TictacTrip-BackExo/issues"
+  },
+  "homepage": "https://github.com/ZiiQoOS/TictacTrip-BackExo#readme"
+}
