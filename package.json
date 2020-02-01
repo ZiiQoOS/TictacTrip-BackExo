@@ -27,6 +27,6 @@
   "homepage": "https://github.com/ZiiQoOS/TictacTrip-BackExo#readme",
   "engines": {
     "node": "12.8.0",
-    "npm": "6.13.6"
+    "npm": "6.x"
   }
 }
