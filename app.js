@@ -14,7 +14,11 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => {
-    res.send({message: "Welcome to Justify!"});
+    res.send({
+        message: `Welcome to Justify!\n Use the following routes to :
+    -/api/token : Get a token.
+    -/api/justify : Justify your text.`
+    });
 });
 
 app.post('/api/token', async (req, res) => {
