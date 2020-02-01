@@ -7,4 +7,5 @@ yarn.lock
 package-lock.json
 # file: ~/.gitignore_global
 .idea
-
+npm-debug.log
+/*.env
