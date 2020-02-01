@@ -1,24 +1,4 @@
 {
   "tokens": [
-    {
-      "email": "ahmedzakaria@gmail.com",
-      "API_KEY": "79E9B8B405FB344EB10B4CBB261895B99DA1B861",
-      "rateLimit": 75884
-    },
-    {
-      "email": "yssf@gmail.com",
-      "API_KEY": "E755C45F184325972E06E22F9A2AD68F9C79BC37",
-      "rateLimit": 75884
-    },
-    {
-      "email": "ilyass@gmail.com",
-      "API_KEY": "B15100CDE82ADDBFF032555EBB114F49F5EEC7D9",
-      "rateLimit": 80000
-    },
-    {
-      "email": "nadalilyass9@gmail.com",
-      "API_KEY": "2D856A4836229165AB6663DF688F223335E1E9E5",
-      "rateLimit": -1174
-    }
   ]
 }
