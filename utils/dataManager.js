@@ -9,9 +9,7 @@ const dataManager = {
         let {tokens} = obj;
         tokens.push(user);
         let json = JSON.stringify(obj);
-        fs.writeFile(datasource, json, 'utf8', (err) => {
-            console.log(err);
-        });
+        fs.writeFile(datasource, json, 'utf8', err => console.log(err));
 
     },
     getUserByEmail: async (email, datasource) => {
@@ -37,9 +35,7 @@ const dataManager = {
             if (u.email === user.email) return u.rateLimit -= count;
         });
         let json = JSON.stringify(obj);
-        fs.writeFile(datasource, json, 'utf8', (err) => {
-            console.log(err);
-        });
+        fs.writeFile(datasource, json, 'utf8', err => console.log(err));
     }
 };
 module.exports = dataManager;

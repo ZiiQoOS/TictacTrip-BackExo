@@ -19,15 +19,18 @@ app.get('/', (req, res) => {
 
 app.post('/api/token', async (req, res) => {
     let {email} = req.body;
-    let user = await dataManager.getUserByEmail(email, appconfig.datasource); // waiting the promise to be resolved before returning the value of the method
-    if (!!user) {
-        res.send({message: 'This email is already exists', API_KEY: user.API_KEY});
-    } else {
-        let API_KEY = tokenizer.generateToken();
-        res.send({API_KEY});
-        let user = {email, API_KEY, rateLimit: 80000};
-        await dataManager.addUser(appconfig.datasource, user);
-    }
+    if (email) {
+        let user = await dataManager.getUserByEmail(email, appconfig.datasource); // waiting the promise to be resolved before returning the value of the method
+        if (!!user) {
+            res.send({message: 'This email is already exists', API_KEY: user.API_KEY});
+        } else {
+            let API_KEY = tokenizer.generateToken();
+            res.send({API_KEY});
+            let user = {email, API_KEY, rateLimit: 80000};
+            await dataManager.addUser(appconfig.datasource, user);
+        }
+    } else res.status(404).send({message: 'Please send an email with the req body'});
+
 });
 
 
