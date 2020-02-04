@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const justify = require('./utils/justify');
 const tokenizer = require('./utils/tokenizer');
 const dataManager = require('./utils/dataManager');
+const resetLimitJob = require('./utils/jobsScheduler');
 const {appconfig} = require('./appconfig');
 let port = process.env.PORT;
 
@@ -11,8 +12,6 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
-
-
 app.get('/', (req, res) => {
     res.send({message: `Welcome to Justify!`});
 });
@@ -35,24 +34,18 @@ app.post('/api/token', async (req, res) => {
 
 
 app.post('/api/justify', async (req, res) => {
-
     let API_KEY = req.header('API_KEY');
-    if (!API_KEY) {
-        res.status(400).send({error: "You need an API_Key to access to the justification service"})
-    } else {
+    if (API_KEY && req.is('text/plain')) { //checking the content type of the request and the API_KEY before processing the body
         let user = await dataManager.getUserByAPIKEY(API_KEY, appconfig.datasource);
-        if (!!user)
-            if (req.is('text/plain') && user.rateLimit - req.body.length >= 0) {
+        if (!!user) {
+            if (user.rateLimit >= req.body.length) {
                 res.send(justify.justifyText(req.body, 80));
                 await dataManager.updateRateLimit(user, req.body.length, appconfig.datasource);
-            } else {    //checking the content type of the request before processing the body
-                res.status(400).send({error: "Request body should be a plain text"});
-            }
-        else res.status(404).send({message: 'API Key not found'});
-    }
-
+            } else res.status(402).send({error: "Payment Required ! you've reached your daily limit."});
+        } else res.status(404).send({message: 'API Key not found'});
+    } else res.status(400).send({error: "Bad Request,No API Key found or the request body is not a plain text."})
 });
 
 if (port == null || port === "") port = appconfig.PORT;
+resetLimitJob.scheduleJob(0, 0); // Schedule a daily job at 00:00 to increase the reset the API daily rate limit
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
