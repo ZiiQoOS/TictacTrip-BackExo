@@ -2,7 +2,6 @@
   "appconfig": {
     "PORT": 3000,
     "datasource": "./fakedata/fakedb.json",
-    "SECRET_KEY": "1234@@@@****",
     "DAILY_LIMIT": 80000
   }
 }

@@ -1,6 +1,13 @@
+/**
+ *
+ * the module responsible for the justification service
+ *
+ * @type {{justifyText: (function(string, number): string)}}
+ */
+
 const justify = {
     justifyText: (str, len) => {
-        let re = RegExp("(?:\\s|^)(.{1," + (len - 1) + "})(?=\\s|$)", "g");
+        let re = RegExp("(?:\\s|^)(.{1," + len + "})(?=\\s|$)", "g");
         let res = [];
         let finalResult = [];
 

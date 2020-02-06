@@ -1,11 +1,13 @@
-const uuidv1 = require('uuid/v1');
-const CryptoJS = require("crypto-js");
-const {appconfig} = require('../appconfig');
+const uuidv4 = require('uuid/v4');
+/**
+ *
+ * Token generation service , built with a uuid v4 module
+ *
+ * @type {{generateToken: (function(): string)}}
+ */
 const tokenizer = {
     generateToken: () => {
-        let randomVal = uuidv1().toString();
-        let API_KEY = CryptoJS.HmacSHA1(randomVal, appconfig.SECRET_KEY);
-        return API_KEY.toString().toUpperCase();
+        return uuidv4().replace(/-|\s/g, "").toUpperCase(); // Generate a unique random uuid v4 and use it as an API KEY after removing hyphens
     }
 };
 module.exports = tokenizer;
