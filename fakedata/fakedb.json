@@ -1,14 +1,14 @@
 {
   "tokens": [
     {
-      "email": "ziiqoo@gmail.com",
-      "API_KEY": "874AA8B4697249629596A0587CB6DF7C",
-      "rateLimit": 75884
+      "email": "zakaria@gmail.com",
+      "API_KEY": "6EA198543E394462ABAF7DF469510D0E",
+      "rateLimit": 80000
     },
     {
-      "email": "ziisqoo@gmail.com",
-      "API_KEY": "0CF03717C37B40EF92FCF423A520C87D",
-      "rateLimit": 942
+      "email": "ahmed@gmail.com",
+      "API_KEY": "C172A0ECFDF743D3B525A1A77959224F",
+      "rateLimit": 80000
     }
   ]
 }

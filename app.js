@@ -43,7 +43,7 @@ app.post('/api/token', async (req, res) => {
             await dataManager.addUser(appconfig.datasource, user);
             res.status(201).send({API_KEY});
         }
-    } else res.status(404).send({message: 'Please send an email with the req body'});
+    } else res.status(404).send({message: 'Please send an email with the request body'});
 
 });
 
@@ -74,7 +74,7 @@ app.post('/api/justify', async (req, res) => {
 if (port == null || port === "") port = appconfig.PORT;
 
 /**
- * Schedule a daily job at midnight (00:00) to reset the API daily rate limit for all users
+ * Schedule a daily job at midnight (00:00 AM) to reset the API daily rate limit for all users
  */
-resetLimitJob.scheduleJob(16, 15);
+resetLimitJob.scheduleJob(0, 0);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
